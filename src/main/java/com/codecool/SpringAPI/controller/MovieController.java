@@ -1,5 +1,6 @@
 package com.codecool.SpringAPI.controller;
 
+import com.codecool.SpringAPI.SpringApiApplication;
 import com.codecool.SpringAPI.exception.MovieNotFoundException;
 import com.codecool.SpringAPI.model.Movie;
 import com.codecool.SpringAPI.repository.MovieRepository;
@@ -19,6 +20,7 @@ public class MovieController {
     public List<Movie> all() {
         List<Movie> movies = repository.findAll();
         movies.removeIf(movie -> !movie.isActive());
+        SpringApiApplication.logger.info("Got all movies");
         return movies;
     }
 
