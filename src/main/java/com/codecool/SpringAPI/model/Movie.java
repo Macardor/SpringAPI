@@ -25,14 +25,6 @@ public class Movie {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Actor> actors;
 
-    public Movie(String title, String description, int year, int rating, boolean isActive) {
-        this.title = title;
-        this.description = description;
-        this.year = year;
-        this.rating = rating;
-        this.isActive = isActive;
-    }
-
     public Movie(){
 
     }

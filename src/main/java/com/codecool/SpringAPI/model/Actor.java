@@ -21,13 +21,6 @@ public class Actor {
     @Transient
     private Set<Movie> movies;
 
-    public Actor(String firstName, String lastName, int rating, boolean isActive){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.rating = rating;
-        this.isActive = isActive;
-    }
-
     public Actor(){
 
     }
