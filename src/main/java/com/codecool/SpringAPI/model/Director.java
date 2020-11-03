@@ -1,5 +1,8 @@
 package com.codecool.SpringAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,6 +15,7 @@ public class Director {
     private String firstName;
     private String lastName;
     private int rating;
+    private boolean isActive = true;
 
     @ManyToMany(mappedBy = "directors", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @Transient
@@ -55,5 +59,13 @@ public class Director {
 
     public void setMovies(Set<Movie> movies) {
         this.movies = movies;
+    }
+
+    @JsonIgnore
+    @JsonProperty(value = "is_active")
+    public boolean isActive() { return isActive; }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }
