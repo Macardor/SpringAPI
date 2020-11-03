@@ -3,6 +3,8 @@ package com.codecool.SpringAPI.controller;
 import com.codecool.SpringAPI.exception.MovieNotFoundException;
 import com.codecool.SpringAPI.model.Movie;
 import com.codecool.SpringAPI.repository.MovieRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @RestController
 public class MovieController {
     private final MovieRepository repository;
+    private Logger logger = LoggerFactory.getLogger(MovieController.class);
 
     MovieController(MovieRepository repository) {
         this.repository = repository;
@@ -17,6 +20,7 @@ public class MovieController {
 
     @GetMapping("/movies")
     public List<Movie> all() {
+        logger.error("Error");
         List<Movie> movies = repository.findAll();
         movies.removeIf(movie -> !movie.isActive());
         return movies;
