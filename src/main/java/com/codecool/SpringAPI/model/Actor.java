@@ -1,5 +1,8 @@
 package com.codecool.SpringAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,21 +15,22 @@ public class Actor {
     private String firstName;
     private String lastName;
     private int rating;
+    private boolean isActive;
 
     @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @Transient
     private Set<Movie> movies;
 
-    public Actor(String firstName, String lastName, int rating){
+    public Actor(String firstName, String lastName, int rating, boolean isActive){
         this.firstName = firstName;
         this.lastName = lastName;
         this.rating = rating;
+        this.isActive = isActive;
     }
 
     public Actor(){
 
     }
-
 
     public Long getId() {
         return id;
@@ -60,11 +64,23 @@ public class Actor {
         this.rating = rating;
     }
 
+    @JsonIgnore
+    @JsonProperty(value = "movies")
     public Set<Movie> getMovies() {
         return movies;
     }
 
     public void setMovies(Set<Movie> movies) {
         this.movies = movies;
+    }
+
+    @JsonIgnore
+    @JsonProperty(value = "is_active")
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }
