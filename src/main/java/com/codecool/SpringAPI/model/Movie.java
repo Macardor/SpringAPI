@@ -2,6 +2,7 @@ package com.codecool.SpringAPI.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,7 +17,7 @@ public class Movie {
     private String description;
     private int year;
     private int rating;
-    private boolean isActive;
+    private boolean isActive = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Director> directors;

@@ -15,7 +15,7 @@ public class Actor {
     private String firstName;
     private String lastName;
     private int rating;
-    private boolean isActive;
+    private boolean isActive = true;
 
     @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @Transient
