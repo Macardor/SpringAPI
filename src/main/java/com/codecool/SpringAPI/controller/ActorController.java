@@ -17,7 +17,9 @@ public class ActorController {
 
     @GetMapping("/actors")
     public List<Actor> all() {
-        return repository.findAll();
+        List<Actor> actors = repository.findAll();
+        actors.removeIf(actor -> !actor.isActive());
+        return actors;
     }
 
     @PostMapping("/actors")
@@ -50,6 +52,6 @@ public class ActorController {
 
     @DeleteMapping("/actors/{id}")
     void deleteActor(@PathVariable Long id) {
-        repository.deleteById(id);
+        repository.getOne(id).setActive(false);
     }
 }

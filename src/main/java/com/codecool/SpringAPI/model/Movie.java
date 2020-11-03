@@ -1,5 +1,8 @@
 package com.codecool.SpringAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,8 +13,10 @@ public class Movie {
     @GeneratedValue
     private Long id;
     private String title;
+    private String description;
     private int year;
     private int rating;
+    private boolean isActive;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Director> directors;
@@ -19,10 +24,12 @@ public class Movie {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Actor> actors;
 
-    public Movie(String title, int year, int rating) {
+    public Movie(String title, String description, int year, int rating, boolean isActive) {
         this.title = title;
+        this.description = description;
         this.year = year;
         this.rating = rating;
+        this.isActive = isActive;
     }
 
     public Movie(){
@@ -43,6 +50,14 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getYear() {
@@ -75,5 +90,15 @@ public class Movie {
 
     public void setActors(Set<Actor> actors) {
         this.actors = actors;
+    }
+
+    @JsonIgnore
+    @JsonProperty(value = "is_active")
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }
