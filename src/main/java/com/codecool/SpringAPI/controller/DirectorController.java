@@ -17,7 +17,7 @@ public class DirectorController {
 
     @GetMapping("/directors")
     public List<Director> getAll() {
-        return repository.findAll();
+        return repository.findByisActive(true);
     }
 
     @PostMapping("/directors")
@@ -36,6 +36,7 @@ public class DirectorController {
                     director.setLastName(newDirector.getLastName());
                     director.setMovies(newDirector.getMovies());
                     director.setRating(newDirector.getRating());
+                    director.setActive(newDirector.isActive());
                     return repository.save(director);
         }).orElseGet(() -> {
             newDirector.setId(id);
@@ -45,6 +46,6 @@ public class DirectorController {
 
     @DeleteMapping("/directors/{id}")
     public void deleteDirector(@PathVariable Long id){
-        repository.deleteById(id);
+        repository.getOne(id).setActive(false);
     }
 }
