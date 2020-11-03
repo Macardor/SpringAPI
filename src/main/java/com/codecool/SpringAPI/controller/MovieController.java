@@ -17,7 +17,9 @@ public class MovieController {
 
     @GetMapping("/movies")
     public List<Movie> all() {
-        return repository.findAll();
+        List<Movie> movies = repository.findAll();
+        movies.removeIf(movie -> !movie.isActive());
+        return movies;
     }
 
     @PostMapping("/movies")
@@ -38,6 +40,7 @@ public class MovieController {
         return repository.findById(id)
                 .map(movie -> {
                     movie.setTitle(newMovie.getTitle());
+                    movie.setDescription(newMovie.getDescription());
                     movie.setYear(newMovie.getYear());
                     movie.setRating(newMovie.getRating());
                     return repository.save(movie);
@@ -50,6 +53,6 @@ public class MovieController {
 
     @DeleteMapping("/movies/{id}")
     void deleteMovie(@PathVariable Long id) {
-        repository.deleteById(id);
+        repository.getOne(id).setActive(false);
     }
 }
