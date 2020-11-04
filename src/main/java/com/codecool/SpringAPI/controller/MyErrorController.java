@@ -31,12 +31,12 @@ public class MyErrorController implements ErrorController {
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 log.warn("ERROR 404: We couldn't find that page");
                 emailService.sendEmail("example@gmail.com", "Error404", "No page");
-                return "ERROR 404 - Sorry, we couldn't find that page";
+                return "<h4>ERROR 404 - Sorry, we couldn't find that page</h4>";
             }
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 log.warn("ERROR 500: Internal server error");
                 emailService.sendEmail("example@gmail.com", "Error500", "Internal server error.");
-                return "ERROR 500 - Internal server error";
+                return "<h4>ERROR 500 - Internal server error</h4>";
             }
         }
         return "<h4>Sorry, something went wrong. Please try again or contact us: movierestapi@gmail.com</h4>";
