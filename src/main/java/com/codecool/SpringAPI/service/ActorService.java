@@ -24,7 +24,7 @@ public class ActorService {
     }
 
     public Actor getActor(Long id){
-        return repository.findById(id).orElseThrow(() -> new ActorNotFoundException(id));
+        return repository.findByIsActiveTrueAndId(id).orElseThrow(() -> new ActorNotFoundException(id));
     }
 
     public Actor updateActor(Actor newActor, Long id){
