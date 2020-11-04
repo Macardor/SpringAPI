@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ActorRepository extends JpaRepository<Actor, Long> {
 
-    List<Actor> findByisActive(boolean isActive);
+    List<Actor> findByIsActiveTrue();
 
     Optional<Actor> findByIsActiveTrueAndId(Long id);
 

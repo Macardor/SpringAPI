@@ -17,11 +17,9 @@ public class MovieService {
 
     public List<Movie> getAllMovies(String title){
         if(!title.equals("")){
-            List<Movie> movies = repository.findByisActive(true);
-            movies.removeIf(movie -> !movie.getTitle().contains(title));
-            return movies;
+            return repository.findByIsActiveTrueAndTitle(title);
         }
-        return repository.findByisActive(true);
+        return repository.findByIsActiveTrue();
     }
 
     public Movie addMovie(Movie newMovie){

@@ -16,7 +16,7 @@ public class DirectorService {
     }
 
     public List<Director> getAllDirectors(){
-        return repository.findByisActive(true);
+        return repository.findByIsActiveTrue();
     }
 
     public Director addDirector(Director newDirector){

@@ -8,9 +8,7 @@ import java.util.Optional;
 
 public interface DirectorRepository extends JpaRepository<Director, Long> {
 
-    List<Director> findByisActive(boolean isActive);
+    List<Director> findByIsActiveTrue();
 
     Optional<Director> findByIsActiveTrueAndId(Long id);
-
-
 }

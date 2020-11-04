@@ -8,7 +8,9 @@ import java.util.Optional;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
-    List<Movie> findByisActive(boolean isActive);
+    List<Movie> findByIsActiveTrue();
+
+    List<Movie> findByIsActiveTrueAndTitle(String title);
 
     Optional<Movie> findByIsActiveTrueAndId(Long id);
 

@@ -16,7 +16,7 @@ public class ActorService {
     }
 
     public List<Actor> getAllActors(){
-        return repository.findByisActive(true);
+        return repository.findByIsActiveTrue();
     }
 
     public Actor addActor(Actor newActor){
