@@ -21,9 +21,7 @@ public class MovieController {
     @GetMapping("/movies")
     public List<Movie> all() {
         log.info("Getting all movies");
-        List<Movie> movies = repository.findAll();
-        movies.removeIf(movie -> !movie.isActive());
-        return movies;
+        return repository.findByisActive(true);
     }
 
     @PostMapping("/movies")

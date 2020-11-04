@@ -21,9 +21,7 @@ public class ActorController {
     @GetMapping("/actors")
     public List<Actor> all() {
         log.info("Getting all actors");
-        List<Actor> actors = repository.findAll();
-        actors.removeIf(actor -> !actor.isActive());
-        return actors;
+        return repository.findByisActive(true);
     }
 
     @PostMapping("/actors")
@@ -31,8 +29,6 @@ public class ActorController {
         log.info("Adding new actor: " + newActor.getFirstName() + " " + newActor.getLastName());
         return repository.save(newActor);
     }
-
-    // Single item
 
     @GetMapping("/actors/{id}")
     public Actor one(@PathVariable Long id) {
