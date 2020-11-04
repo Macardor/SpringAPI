@@ -1,5 +1,7 @@
 package com.codecool.SpringAPI.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class MyErrorController implements ErrorController {
+    private final Logger log = LogManager.getLogger(MyErrorController.class);
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
@@ -18,9 +21,11 @@ public class MyErrorController implements ErrorController {
         if (status != null) {
             Integer statusCode = Integer.valueOf(status.toString());
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
+                log.warn("ERROR 404: We couldn't find that page");
                 return "ERROR 404 - Sorry, we couldn't find that page";
             }
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                log.warn("ERROR 500: Internal server error");
                 return "ERROR 500 - Internal server error";
             }
         }
