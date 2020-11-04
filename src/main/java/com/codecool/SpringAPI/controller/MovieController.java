@@ -41,7 +41,7 @@ public class MovieController {
 
     @PutMapping("/movies/{id}")
     public Movie replaceActor(@RequestBody Movie newMovie, @PathVariable Long id) {
-        log.info("Putt on movie id: " + id);
+        log.info("Put on movie id: " + id);
         return repository.findById(id)
                 .map(movie -> {
                     movie.setTitle(newMovie.getTitle());
