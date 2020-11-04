@@ -24,7 +24,7 @@ public class MovieService {
     }
 
     public Movie getMovie(Long id){
-        return repository.findById(id).orElseThrow(() -> new DirectorNotFoundException(id));
+        return repository.findByIsActiveTrueAndId(id).orElseThrow(() -> new DirectorNotFoundException(id));
     }
 
     public Movie updateMovie(Movie newMovie, Long id){
