@@ -39,7 +39,7 @@ public class ActorController {
     @PutMapping("/actors/{id}")
     public Actor replaceActor(@RequestBody Actor newActor, @PathVariable Long id) {
         log.info("Put on actor id: " + id);
-        return actorService.replaceActor(newActor, id);
+        return actorService.updateActor(newActor, id);
     }
 
     @DeleteMapping("/actors/{id}")

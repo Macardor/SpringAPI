@@ -4,7 +4,6 @@ import com.codecool.SpringAPI.exception.ActorNotFoundException;
 import com.codecool.SpringAPI.model.Actor;
 import com.codecool.SpringAPI.repository.ActorRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -25,11 +24,10 @@ public class ActorService {
     }
 
     public Actor getActor(Long id){
-        return repository.findById(id)
-                .orElseThrow(() -> new ActorNotFoundException(id));
+        return repository.findById(id).orElseThrow(() -> new ActorNotFoundException(id));
     }
 
-    public Actor replaceActor(Actor newActor, Long id){
+    public Actor updateActor(Actor newActor, Long id){
         return repository.findById(id)
                 .map(actor -> {
                     actor.setFirstName(newActor.getFirstName());
