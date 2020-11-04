@@ -27,18 +27,18 @@ public class DirectorController {
 
     @PostMapping("/directors")
     public Director addDirector(@RequestBody Director newDirector){
-        log.info("Adding director");
+        log.info("Adding new director :" + newDirector.getFirstName() + " " + newDirector.getLastName());
         return repository.save(newDirector); }
 
     @GetMapping("/directors/{id}")
     public Director getOneById(@PathVariable Long id){
-        log.info("Getting director by id");
+        log.info("Getting director with id: " + id);
         return repository.findById(id).orElseThrow(() -> new DirectorNotFoundException(id));
     }
 
     @PutMapping("/directors/{id}")
     public Director updateDirector(@RequestBody Director newDirector, @PathVariable Long id){
-        log.info("Updating director");
+        log.info("Updating director with id: " + id);
         return repository.findById(id)
                 .map(director -> {
                     director.setFirstName(newDirector.getFirstName());
@@ -55,7 +55,7 @@ public class DirectorController {
 
     @DeleteMapping("/directors/{id}")
     public void deleteDirector(@PathVariable Long id){
-        log.info("Deleting director");
+        log.info("Deleting director with id: " + id);
         repository.getOne(id).setActive(false);
     }
 }
