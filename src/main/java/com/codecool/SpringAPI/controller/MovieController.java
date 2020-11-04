@@ -19,9 +19,9 @@ public class MovieController {
     }
 
     @GetMapping("/movies")
-    public List<Movie> all() {
+    public List<Movie> all(@RequestParam(value = "title", defaultValue = "") String title) {
         log.info("Getting all movies");
-        return movieService.getAllMovies();
+        return movieService.getAllMovies(title);
     }
 
     @PostMapping("/movies")
