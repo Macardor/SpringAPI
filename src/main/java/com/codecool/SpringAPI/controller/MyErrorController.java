@@ -30,7 +30,7 @@ public class MyErrorController implements ErrorController {
             Integer statusCode = Integer.valueOf(status.toString());
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 log.warn("ERROR 404: We couldn't find that page");
-                emailService.sendEmail("example@gmail.com", "Error404", "No page");
+                emailService.sendEmail("example@gmail.com", "Error404", "No such page");
                 return "<h4>ERROR 404 - Sorry, we couldn't find that page</h4>";
             }
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
