@@ -19,9 +19,10 @@ public class ActorController {
     }
 
     @GetMapping("/actors")
-    public List<Actor> all() {
+    public List<Actor> all(@RequestParam(value = "search", defaultValue = "") String search,
+                           @RequestParam(value = "rating", defaultValue = "") Integer rating) {
         log.info("Getting all actors");
-        return actorService.getAllActors();
+        return actorService.getAllActors(search, rating);
     }
 
     @PostMapping("/actors")

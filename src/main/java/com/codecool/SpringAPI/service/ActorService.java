@@ -15,8 +15,10 @@ public class ActorService {
         this.repository = repository;
     }
 
-    public List<Actor> getAllActors(){
-        return repository.findByIsActiveTrue();
+    public List<Actor> getAllActors(String search, Integer rating){
+        if(search.equals("") && rating == null) return repository.findByIsActiveTrue();
+        if(rating != null) return repository.findByIsActiveTrueAndRating(rating);
+        return repository.findByIsActiveTrueAndFirstNameOrLastNameIgnoreCaseContains(search, search);
     }
 
     public Actor addActor(Actor newActor){

@@ -10,6 +10,10 @@ public interface ActorRepository extends JpaRepository<Actor, Long> {
 
     List<Actor> findByIsActiveTrue();
 
+    List<Actor> findByIsActiveTrueAndRating(Integer rating);
+
+    List<Actor> findByIsActiveTrueAndFirstNameOrLastNameIgnoreCaseContains(String firstName, String lastName);
+
     Optional<Actor> findByIsActiveTrueAndId(Long id);
 
 }
