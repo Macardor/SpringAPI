@@ -20,9 +20,10 @@ public class DirectorController {
     }
 
     @GetMapping("/directors")
-    public List<Director> getAll() {
+    public List<Director> getAll(@RequestParam(value = "search", defaultValue = "") String search,
+                                 @RequestParam(value = "rating", defaultValue = "") Integer rating) {
         log.info("Getting all directors");
-        return directorService.getAllDirectors();
+        return directorService.getAllDirectors(search, rating);
     }
 
     @PostMapping("/directors")

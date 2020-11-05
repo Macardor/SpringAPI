@@ -15,8 +15,10 @@ public class DirectorService {
         this.repository = repository;
     }
 
-    public List<Director> getAllDirectors(){
-        return repository.findByIsActiveTrue();
+    public List<Director> getAllDirectors(String search, Integer rating){
+        if(search.equals("") && rating == null) return repository.findByIsActiveTrue();
+        if(rating != null) return repository.findByIsActiveTrueAndRating(rating);
+        return repository.findByIsActiveTrueAndFirstNameOrLastNameIgnoreCaseContains(search, search);
     }
 
     public Director addDirector(Director newDirector){
@@ -24,7 +26,7 @@ public class DirectorService {
     }
 
     public Director getDirector(Long id){
-        return repository.findById(id).orElseThrow(() -> new DirectorNotFoundException(id));
+        return repository.findByIsActiveTrueAndId(id).orElseThrow(() -> new DirectorNotFoundException(id));
     }
 
     public Director updateDirector(Director newDirector, Long id){

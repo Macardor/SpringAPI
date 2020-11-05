@@ -16,16 +16,14 @@ public class MovieService {
     }
 
     public List<Movie> getAllMovies(String search, Integer year, Integer rating){
-        if (search.equals("") && year == null && rating == null){
+        if (search.equals("") && year == null && rating == null)
             return repository.findByIsActiveTrue();
-        }
-        if(year != null && rating != null){
+        if(year != null && rating != null)
             return repository.findByIsActiveTrueAndYearAndRating(year, rating);
-        }else if(year != null){
+        else if(year != null)
             return repository.findByIsActiveTrueAndYear(year);
-        }else if(rating != null){
+        else if(rating != null)
             return repository.findByIsActiveTrueAndRating(rating);
-        }
         return repository.findByIsActiveTrueAndTitleOrDescriptionIgnoreCaseContains(search, search);
     }
 

@@ -10,5 +10,9 @@ public interface DirectorRepository extends JpaRepository<Director, Long> {
 
     List<Director> findByIsActiveTrue();
 
+    List<Director> findByIsActiveTrueAndRating(Integer rating);
+
+    List<Director> findByIsActiveTrueAndFirstNameOrLastNameIgnoreCaseContains(String firstName, String lastName);
+
     Optional<Director> findByIsActiveTrueAndId(Long id);
 }
