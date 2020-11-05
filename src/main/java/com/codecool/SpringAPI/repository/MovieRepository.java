@@ -10,7 +10,13 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     List<Movie> findByIsActiveTrue();
 
-    List<Movie> findByIsActiveTrueAndTitle(String title);
+    List<Movie> findByIsActiveTrueAndTitleOrDescriptionIgnoreCaseContains(String searchTitle, String searchDesc);
+
+    List<Movie> findByIsActiveTrueAndYearAndRating(Integer year, Integer rating);
+
+    List<Movie> findByIsActiveTrueAndYear(Integer year);
+
+    List<Movie> findByIsActiveTrueAndRating(Integer rating);
 
     Optional<Movie> findByIsActiveTrueAndId(Long id);
 
