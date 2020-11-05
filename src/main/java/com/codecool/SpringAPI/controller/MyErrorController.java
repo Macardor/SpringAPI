@@ -1,8 +1,6 @@
 package com.codecool.SpringAPI.controller;
 
 import com.codecool.SpringAPI.service.EmailService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
