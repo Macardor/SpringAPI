@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +14,8 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
+@Component
 public class MyErrorController implements ErrorController {
-    private final Logger log = LogManager.getLogger(MyErrorController.class);
 
     @Autowired
     private final EmailService emailService = new EmailService();
@@ -26,12 +27,10 @@ public class MyErrorController implements ErrorController {
         if (status != null) {
             Integer statusCode = Integer.valueOf(status.toString());
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
-                log.warn("ERROR 404: We couldn't find that page");
                 emailService.sendEmail("example@gmail.com", "Error404", "No such page");
                 return "<h4>ERROR 404 - Sorry, we couldn't find that page</h4>";
             }
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                log.warn("ERROR 500: Internal server error");
                 emailService.sendEmail("example@gmail.com", "Error500", "Internal server error.");
                 return "<h4>ERROR 500 - Internal server error</h4>";
             }
