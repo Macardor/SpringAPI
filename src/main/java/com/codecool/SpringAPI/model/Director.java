@@ -53,6 +53,8 @@ public class Director {
         this.rating = rating;
     }
 
+    @JsonIgnore
+    @JsonProperty(value = "movies")
     public Set<Movie> getMovies() {
         return movies;
     }
