@@ -1,13 +1,10 @@
 package com.codecool.SpringAPI.controller;
 
 import com.codecool.SpringAPI.service.EmailService;
-import com.codecool.SpringAPI.service.EmailServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +17,7 @@ public class MyErrorController implements ErrorController {
     private final Logger log = LogManager.getLogger(MyErrorController.class);
 
     @Autowired
-    private final EmailService emailService = new EmailServiceImpl();
+    private final EmailService emailService = new EmailService();
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
