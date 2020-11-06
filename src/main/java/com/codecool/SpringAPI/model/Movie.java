@@ -18,10 +18,10 @@ public class Movie {
     private int rating;
     private boolean isActive = true;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<Director> directors;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<Actor> actors;
 
     public Movie(){

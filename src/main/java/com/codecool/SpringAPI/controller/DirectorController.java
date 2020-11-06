@@ -2,13 +2,11 @@ package com.codecool.SpringAPI.controller;
 
 import com.codecool.SpringAPI.model.Director;
 import com.codecool.SpringAPI.service.DirectorService;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Component
 public class DirectorController {
     private final DirectorService directorService;
 

@@ -2,13 +2,11 @@ package com.codecool.SpringAPI.controller;
 
 import com.codecool.SpringAPI.model.Movie;
 import com.codecool.SpringAPI.service.MovieService;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Component
 public class MovieController {
     private final MovieService movieService;
 

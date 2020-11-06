@@ -4,7 +4,6 @@ import com.codecool.SpringAPI.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +11,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@Component
 public class MyErrorController implements ErrorController {
 
     @Autowired

@@ -2,13 +2,11 @@ package com.codecool.SpringAPI.controller;
 
 import com.codecool.SpringAPI.model.Actor;
 import com.codecool.SpringAPI.service.ActorService;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Component
 public class ActorController {
     private final ActorService actorService;
 

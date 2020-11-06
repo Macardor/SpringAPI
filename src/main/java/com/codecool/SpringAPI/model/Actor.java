@@ -17,7 +17,7 @@ public class Actor {
     private int rating;
     private boolean isActive = true;
 
-    @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE)
     @Transient
     private Set<Movie> movies;
 

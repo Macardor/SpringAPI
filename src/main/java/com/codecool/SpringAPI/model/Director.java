@@ -17,7 +17,7 @@ public class Director {
     private int rating;
     private boolean isActive = true;
 
-    @ManyToMany(mappedBy = "directors", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "directors", cascade = CascadeType.REMOVE)
     @Transient
     private Set<Movie> movies;
 
